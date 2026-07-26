@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahad Hossain - Integration & System Specialist Portfolio</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+            --accent-blue: #2563eb;
+            --accent-hover: #1d4ed8;
+            --accent-teal: #0d9488;
+            --accent-gradient: linear-gradient(135deg, #2563eb 0%, #0d9488 100%);
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-dim: #94a3b8;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --shadow-lg: 0 20px 30px -10px rgba(37, 99, 235, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Clean Light Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+            padding: 16px 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        header.hero {
+            padding: 140px 0 70px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: var(--accent-blue);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 6px var(--accent-blue);
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            color: var(--text-main);
+        }
+
+        .hero h1 span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--accent-teal);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-bio {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 35px;
+            max-width: 580px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 26px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: #ffffff;
+            box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px -4px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-main);
+            border: 1px solid var(--card-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Profile Image Frame */
+        .hero-image-wrapper {
+            position: relative;
+        }
+
+        .hero-image-container {
+            width: 280px;
+            height: 320px;
+            border-radius: 30px;
+            overflow: hidden;
+            border: 4px solid var(--bg-secondary);
+            position: relative;
+            background: var(--bg-secondary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 65px 0;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+        }
+
+        .section-tag {
+            color: var(--accent-blue);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .skill-card:hover {
+            border-color: #bfdbfe;
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .skill-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: #eff6ff;
+            color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        .skill-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-card li i {
+            color: var(--accent-teal);
+            font-size: 0.75rem;
+        }
+
+        /* Projects List */
+        .projects-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .project-card:hover {
+            border-color: #bfdbfe;
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .project-badge {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #16a34a;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .project-meta {
+            margin-top: 15px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .project-meta-item {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .project-meta-item strong {
+            color: var(--accent-blue);
+            font-weight: 700;
+        }
+
+        /* Experience Section */
+        .experience-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .exp-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: #ccfbf1;
+            color: var(--accent-teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .exp-details {
+            width: 100%;
+        }
+
+        .exp-details h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text-main);
+        }
+
+        .exp-company {
+            color: var(--accent-blue);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        /* Contact Box */
+        .contact-box {
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 45px;
+            text-align: center;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-box h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .contact-box p {
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 30px auto;
+        }
+
+        .contact-info-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-chip {
+            background: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            padding: 12px 22px;
+            border-radius: 12px;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .contact-chip:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        footer {
+            border-top: 1px solid var(--card-border);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.88rem;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 768px) {
+            header.hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 110px;
+                gap: 30px;
+            }
+
+            .hero-bio {
+                margin: 0 auto 30px auto;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .hero-image-container {
+                width: 220px;
+                height: 220px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .experience-card {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Light Theme Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">RH.</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero" id="about">
+            <div class="hero-content">
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    Available for New Opportunities
+                </div>
+                <h1>Hi, I'm <span>Rahad Hossain</span></h1>
+                <div class="hero-subtitle">System Implementation & Maintenance (SIM) Specialist</div>
+                <p class="hero-bio">
+                    With hands-on technical experience, I bridge the gap between complex access control hardware, IT infrastructure, customer support, and R&D engineering teams to deliver seamless cloud integrations.
+                </p>
+                <div class="cta-buttons">
+                    <a href="resume.pdf" class="btn btn-primary" download target="_blank">
+                        <i class="fa-solid fa-file-arrow-down"></i> Download CV
+                    </a>
+                    <a href="mailto:hossain.rahad@gmail.com" class="btn btn-secondary">
+                        <i class="fa-solid fa-paper-plane"></i> Get In Touch
+                    </a>
+                </div>
+            </div>
+
+            <!-- Profile Picture Box -->
+            <div class="hero-image-wrapper">
+                <div class="hero-image-container">
+                    <img src="profile.jpg" alt="Rahad Hossain" onerror="this.src='https://via.placeholder.com/280x280/e2e8f0/2563eb?text=Add+profile.jpg'">
+                </div>
+            </div>
+        </header>
+
+        <!-- Core Skills Section -->
+        <section id="skills">
+            <div class="section-header">
+                <span class="section-tag">Capabilities</span>
+                <h2 class="section-title">Core Expertise</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-fingerprint"></i></div>
+                    <h3>Access Control & Hardware</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-circle-chevron-right"></i> ZKTeco & Biometric Setup</li>
+                        <li><i class="fa-solid fa-circle-chevron-right"></i> Wi-Fi to Wired LAN Migration</li>
+                        <li><i class="fa-solid fa-circle-chevron-right"></i> Static IP & Gateway Mapping</li>
+                        <li><i class="fa-solid fa-circle-chevron-right"></i> Hardware-to-Cloud Integration</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-server"></i></div>
+                    <h3>IT Infrastructure</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-circle-chevron-right"></i> Windows 10 & Linux Deployments</li>
+                        <li><i class="fa-solid fa-circle-chevron-right"></i> Network & Server Maintenance</li>
+                        <li><i class="fa-solid fa-circle-chevron-right"></i> IT Troubleshooting & Security</li>
+                        <li><i class="fa-solid fa-circle-chevron-right"></i> System Diagnostics & Recovery</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-flask"></i></div>
+                    <h3>R&D Engineering Support</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-circle-chevron-right"></i> Python Config Script Execution</li>
+                        <li><i class="fa-solid fa-circle-chevron-right"></i> API Tunneling & Endpoint Setup</li>
+                        <li><i class="fa-solid fa-circle-chevron-right"></i> Integration & Firmware Testing</li>
+                        <li><i class="fa-solid fa-circle-chevron-right"></i> Technical Feedback Loop</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-headset"></i></div>
+                    <h3>Support & Operations</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-circle-chevron-right"></i> Client Onboarding & Support</li>
+                        <li><i class="fa-solid fa-circle-chevron-right"></i> Tipsoi HRM Integration</li>
+                        <li><i class="fa-solid fa-circle-chevron-right"></i> Supply Chain Coordination</li>
+                        <li><i class="fa-solid fa-circle-chevron-right"></i> Technical Issue Resolution</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Studies Section -->
+        <section id="projects">
+            <div class="section-header">
+                <span class="section-tag">Case Studies</span>
+                <h2 class="section-title">Key Projects & Impact</h2>
+            </div>
+            <div class="projects-wrapper">
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">1. Biometric Attendance Integration with Cloud HRM</div>
+                        <span class="project-badge">Cloud & Hardware</span>
+                    </div>
+                    <div class="project-meta">
+                        <div class="project-meta-item"><strong>Problem:</strong> Newly installed biometric attendance devices were unable to establish communication with the cloud HRM software due to invalid server routing.</div>
+                        <div class="project-meta-item"><strong>Solution:</strong> Configured correct API endpoints, fixed server parameter mismatches, and executed tunneling scripts to restore connectivity.</div>
+                        <div class="project-meta-item"><strong>Impact:</strong> Enabled 100% automated real-time punch data synchronization across cloud systems.</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">2. Network Stability & Attendance Optimization</div>
+                        <span class="project-badge">Networking</span>
+                    </div>
+                    <div class="project-meta">
+                        <div class="project-meta-item"><strong>Problem:</strong> Frequent Wi-Fi disconnections caused missing biometric logs and data sync delays.</div>
+                        <div class="project-meta-item"><strong>Solution:</strong> Re-architected system connectivity by migrating devices from Wi-Fi to direct wired LAN connections with static IP configuration.</div>
+                        <div class="project-meta-item"><strong>Impact:</strong> Achieved 99.9% device uptime and eliminated server disconnection incidents.</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">3. Workplace OS Migration & Systems Provisioning</div>
+                        <span class="project-badge">IT Operations</span>
+                    </div>
+                    <div class="project-meta">
+                        <div class="project-meta-item"><strong>Problem:</strong> Laptops running Linux needed migration to Windows 10 for enterprise software compatibility.</div>
+                        <div class="project-meta-item"><strong>Solution:</strong> Handled complete clean OS installations, driver provisioning, and security extension configurations.</div>
+                        <div class="project-meta-item"><strong>Impact:</strong> Accelerated team onboarding and ensured workplace system reliability.</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Professional Experience Section -->
+        <section id="experience">
+            <div class="section-header">
+                <span class="section-tag">History</span>
+                <h2 class="section-title">Work Experience</h2>
+            </div>
+            <div class="experience-card">
+                <div class="exp-icon">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div class="exp-details">
+                    <h3>Sub Assistant Engineer</h3>
+                    <div class="exp-company">Inovace Technologies • 2 Years</div>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 10px; line-height: 1.6;">
+                        Managing end-to-end ZKTeco biometric deployments, Tipsoi HRM cloud integration, API tunneling with Python automation scripts, wired LAN network optimization, and local supply chain logistics for R&D operations.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="contact-box">
+                <h2>Let's Work Together</h2>
+                <p>Feel free to reach out for IT system integrations, access control deployments, or technical support inquiries.</p>
+                
+                <div class="contact-info-grid">
+                    <a href="mailto:hossain.rahad@gmail.com" class="contact-chip">
+                        <i class="fa-solid fa-envelope" style="color: #2563eb;"></i>
+                        hossain.rahad@icloud.com
+                    </a>
+                    <a href="tel:01312709677" class="contact-chip">
+                        <i class="fa-solid fa-phone" style="color: #16a34a;"></i>
+                        01312709677
+                    </a>
+                    <a href="https://www.linkedin.com/in/rahad-hossain-656913242?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" class="contact-chip">
+                        <i class="fa-brands fa-linkedin" style="color: #0284c7;"></i>
+                        LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Rahad Hossain. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
